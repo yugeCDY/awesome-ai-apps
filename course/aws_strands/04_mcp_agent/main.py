@@ -20,14 +20,17 @@ from strands.tools.mcp import MCPClient
 load_dotenv()
 
 # Validate API key
-nebius_api_key = os.getenv("NEBIUS_API_KEY")
-if not nebius_api_key:
-    raise ValueError("NEBIUS_API_KEY environment variable is required")
+deepseek_api_key = os.getenv("DEEPSEEK_API_KEY")
+if not deepseek_api_key:
+    raise ValueError("DEEPSEEK_API_KEY environment variable is required")
 
 # Configure the language model
 model = LiteLLMModel(
-    client_args={"api_key": nebius_api_key},
-    model_id="nebius/deepseek-ai/DeepSeek-V3-0324",
+    client_args={
+        "api_key": os.getenv("DEEPSEEK_API_KEY"),
+        "base_url": "https://api.deepseek.com",
+    },
+    model_id="openai/deepseek-reasoner",
 )
 
 # Set up MCP client to connect to AWS documentation server

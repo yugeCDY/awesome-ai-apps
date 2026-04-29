@@ -33,8 +33,15 @@ def main():
     """
     # Configure the language model
     model = LiteLLMModel(
-        client_args={"api_key": os.getenv("NEBIUS_API_KEY")},
-        model_id="nebius/zai-org/GLM-4.5",
+        client_args={
+            "api_key": os.getenv("DEEPSEEK_API_KEY"),
+            "base_url": "https://api.deepseek.com",
+        },
+        model_id="openai/deepseek-reasoner",
+        params={
+            "max_tokens": 1500,
+            "temperature": 0.7,
+        },
     )
     # Create the data extraction agent
     agent = Agent(

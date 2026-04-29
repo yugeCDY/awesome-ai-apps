@@ -47,8 +47,11 @@ def create_orchestrator_agent() -> Agent:
     """
     # Configure the language model for the orchestrator
     model = LiteLLMModel(
-        client_args={"api_key": os.getenv("NEBIUS_API_KEY")},
-        model_id="nebius/moonshotai/Kimi-K2-Instruct",
+        client_args={
+            "api_key": os.getenv("DEEPSEEK_API_KEY"),
+            "base_url": "https://api.deepseek.com",
+        },
+        model_id="openai/deepseek-reasoner",
     )
 
     # Create the orchestrator agent and provide it with the specialized agents as tools.

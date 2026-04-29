@@ -9,10 +9,13 @@ load_dotenv()
 
 model = LiteLLMModel(
     client_args={
-        "api_key": os.getenv("NEBIUS_API_KEY"),
+        "api_key": os.getenv("DEEPSEEK_API_KEY"),
+        "base_url": "https://api.deepseek.com",
     },
-    model_id="nebius/zai-org/GLM-4.5",
+    model_id="openai/deepseek-reasoner",
 )
+
+
 
 # Enable debug logs and print them to stderr
 logging.getLogger("strands.multiagent").setLevel(logging.DEBUG)
